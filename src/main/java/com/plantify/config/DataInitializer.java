@@ -33,6 +33,10 @@ public class DataInitializer implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
         initializeUsers();
+        if (productRepository.count() >= 180) {
+            log.info("Database already seeded with {} products. Fast startup completed.", productRepository.count());
+            return;
+        }
         initializeCategoriesAndProducts();
         updateCategoriesSequenceAndImages();
         updateFeaturedPopularProducts();
