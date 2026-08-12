@@ -1,0 +1,15 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!target/classes/META-INF/
+!target/test-classes/META-INF/
+
+# Local Environment & Secrets
+.env
+*.log
+
+# IDE Files
+.idea/
+*.iml
+.classpath
+.project
+.settings/
