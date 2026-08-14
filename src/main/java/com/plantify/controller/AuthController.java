@@ -28,14 +28,14 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/register")
+    @PostMapping({"/register", "/auth/register", "/signup", "/auth/signup"})
     public ResponseEntity<ApiResponse<AuthResponse>> register(@Valid @RequestBody RegisterRequest request, HttpServletResponse response) {
         AuthResponse authResponse = authService.register(request);
         setAuthCookies(response, authResponse.getToken());
         return new ResponseEntity<>(ApiResponse.success("User registered successfully", authResponse), HttpStatus.CREATED);
     }
 
-    @PostMapping("/login")
+    @PostMapping({"/login", "/auth/login"})
     public ResponseEntity<ApiResponse<AuthResponse>> login(@Valid @RequestBody LoginRequest request, HttpServletResponse response) {
         AuthResponse authResponse = authService.login(request);
         setAuthCookies(response, authResponse.getToken());

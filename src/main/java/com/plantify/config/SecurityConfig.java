@@ -61,7 +61,7 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)) // Allow H2 console frames
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/register", "/api/login", "/api/logout", "/api/auth/logout", "/api/forgot-password", "/api/verify-otp", "/api/reset-password").permitAll()
+                .requestMatchers("/api/auth/**", "/api/register", "/api/signup", "/api/login", "/api/logout", "/api/forgot-password", "/api/verify-otp", "/api/reset-password").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/products/**", "/api/categories/**").permitAll()
                 .requestMatchers("/h2-console/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
